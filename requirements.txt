@@ -1,0 +1,12 @@
+pandas
+numpy
+scikit-learn
+datasets
+huggingface_hub
+joblib
+xgboost
+fastapi
+uvicorn
+streamlit
+python-dotenv
+pytest
