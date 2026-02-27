@@ -114,16 +114,16 @@ jobs:
           PY
 
       - name: Register model to Hugging Face Hub (optional)
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.HF_TOKEN != '' && vars.HF_MODEL_REPO != '' }}
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.hf_token != '' && vars.HF_MODEL_REPO != '' }}
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          hf_token: ${{ secrets.hf_token }}
           HF_MODEL_REPO: ${{ vars.HF_MODEL_REPO }}
         run: |
           python - << 'PY'
           import os
           from huggingface_hub import HfApi
 
-          api = HfApi(token=os.environ['HF_TOKEN'])
+          api = HfApi(token=os.environ['hf_token'])
           repo_id = os.environ['HF_MODEL_REPO']
 
           api.create_repo(repo_id=repo_id, repo_type='model', exist_ok=True)
